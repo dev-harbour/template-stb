@@ -1,0 +1,6 @@
+# hbgl
+*.bak
+*.exe
+build
+lib
+tmp
