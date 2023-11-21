@@ -172,7 +172,8 @@ void RectWidthToOutside(int x, int y, int width, int height, int numberLines, un
 void FillRect( int x, int y, int width, int height, unsigned int color );
 
 //--- HTTP functions
-void openURL( const char *url );
+bool openURL( const char *url );
+bool openEmailClient( const char *emailAddress );
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 // internal
