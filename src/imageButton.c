@@ -181,3 +181,34 @@ void FreeImageButton( ImageButton *pImageButton )
    }
 }
 
+void PrintImageButtonStruct( const ImageButton *pImageButton )
+{
+   printf( "\033[2J" );
+   printf( "\033[H" );
+
+   if( pImageButton )
+   {
+      printf( "ImageButton Structure\n" );
+      printf( "[\n" );
+      printf( "   HBG          : %p\n", pImageButton->pHBGL );
+      printf( "   TextureID    : %d\n", pImageButton->textureID );
+      printf( "   ImageButtonID: %d\n", pImageButton->imageButtonID );
+      printf( "   X            : %d\n", pImageButton->x );
+      printf( "   Y            : %d\n", pImageButton->y );
+      printf( "   Width        : %d\n", pImageButton->width );
+      printf( "   Height       : %d\n", pImageButton->height );
+      printf( "   Channels     : %d\n", pImageButton->channels );
+      printf( "   State        : %d\n", pImageButton->state );
+      printf( "   Mouse Over   : %d\n", pImageButton->mouseOver );
+      printf( "   Clicked      : %d\n", pImageButton->clicked );
+      printf( "   OnClick      : %p\n", pImageButton->onClick );
+      printf( "]\n" );
+   }
+   else
+   {
+      printf( "Image button structure is NULL\n" );
+      return;
+   }
+
+   fflush( stdout );
+}

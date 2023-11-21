@@ -26,6 +26,8 @@ int main()
 
          DrawImageButton( imgBtn, startX, startY, imgBtn->width, imgBtn->height );
 
+         PrintImageButtonStruct( imgBtn );
+
       ENDDRAWING( app );
       WaitEvents();
    }

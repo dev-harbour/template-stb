@@ -159,6 +159,7 @@ void   PrintImageStruct( const Image *pImage );
 ImageButton *ImageButtonNew( HBGL *pHBGL, const char *imageButtonPath, void ( *onClick )() );
 void         DrawImageButton( ImageButton *pImageButton, int x, int y, int width, int height );
 void         FreeImageButton( ImageButton *pImageButton );
+void         PrintImageButtonStruct( const ImageButton *pImageButton );
 
 //--- Shapes
 void Point( int x, int y, unsigned int color );
