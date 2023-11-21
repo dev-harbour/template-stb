@@ -100,7 +100,7 @@ void RectWidthToCenter( int x, int y, int width, int height, int numberLines, un
    set_color_from_hex( color );
    for( int i = 0; i < halfLines; i++ )
    {
-      // Rysowanie do środka
+      // Drawing inwards
       // Top
       Line( x, y + i, width, 0, color );
       // Right
@@ -113,7 +113,7 @@ void RectWidthToCenter( int x, int y, int width, int height, int numberLines, un
 
    for( int i = 0; i < numberLines - halfLines; i++ )
    {
-      // Rysowanie na zewnątrz
+      // Drawing outdoors
       // Top
       Line( x - i, y - i, width + i * 2, 0, color );
       // Right

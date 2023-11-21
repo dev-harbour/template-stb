@@ -207,11 +207,11 @@ void DrawFont( Font *pFont, int x, int y, const char *text, unsigned int foregro
    {
       int i;
 
-      // Zaczynamy od pozycji, w której ma być wyświetlony tekst
+      // We start from the position where the text is to be displayed
       float currentX;
       float currentY;
 
-      // Inicjalizacja zmiennych do obliczenia wymiarów
+      // Initialization of variables for calculating dimensions
       float minX = x;
       float minY = y;
       float maxX = x;
@@ -223,7 +223,7 @@ void DrawFont( Font *pFont, int x, int y, const char *text, unsigned int foregro
          glEnable( GL_TEXTURE_2D );
       }
 
-      // Dekodowanie UTF-8
+      // Decoding UTF-8
       int codepoints[ 256 ];
       if( decode_utf8( ( const unsigned char * ) text, codepoints, 256 ) < 0 )
       {
@@ -257,7 +257,7 @@ void DrawFont( Font *pFont, int x, int y, const char *text, unsigned int foregro
       glEnd();
       glBindTexture( GL_TEXTURE_2D, 0 );
 
-      // Aktualizacja pozycji
+      // Position update
       pFont->x = x;
       pFont->y = y;
       pFont->width  = maxX - minX;
@@ -281,11 +281,11 @@ void DrawFontBg( Font *pFont, int x, int y, const char *text, unsigned int foreg
    {
       int i;
 
-      // Zaczynamy od pozycji, w której ma być wyświetlony tekst
+      // We start from the position where the text is to be displayed
       float currentX;
       float currentY;
 
-      // Inicjalizacja zmiennych do obliczenia wymiarów
+      // Initialization of variables for calculating dimensions
       float minX = x;
       float minY = y;
       float maxX = x;
@@ -297,7 +297,7 @@ void DrawFontBg( Font *pFont, int x, int y, const char *text, unsigned int foreg
          glEnable( GL_TEXTURE_2D );
       }
 
-      // Dekodowanie UTF-8
+      // Decoding UTF-8
       int codepoints[ 256 ];
       if( decode_utf8( ( const unsigned char * ) text, codepoints, 256 ) < 0 )
       {
@@ -313,7 +313,7 @@ void DrawFontBg( Font *pFont, int x, int y, const char *text, unsigned int foreg
          stbtt_aligned_quad q;
          stbtt_GetBakedQuad( pFont->cdata, FONT_TEXTURE_SIZE, FONT_TEXTURE_SIZE, codepoints[ i ] - 32, &currentX, &currentY, &q, 1 );
 
-         // Obliczanie wymiarów (bounding box)
+         // Calculating dimensions (bounding box)
          minX = fmin( minX, q.x0 );
          minY = fmin( minY, q.y0 );
          maxX = fmax( maxX, q.x1 );
@@ -325,7 +325,7 @@ void DrawFontBg( Font *pFont, int x, int y, const char *text, unsigned int foreg
       float padding = calculate_padding( pFont );
 
       set_color_from_hex( background );
-      // Rysowanie tła z marginesem
+      // Drawing a background with a margin
       glBegin( GL_QUADS );
          glVertex2f( minX - padding, minY - padding ); // Dolny lewy róg
          glVertex2f( maxX + padding, minY - padding ); // Dolny prawy róg
@@ -333,7 +333,7 @@ void DrawFontBg( Font *pFont, int x, int y, const char *text, unsigned int foreg
          glVertex2f( minX - padding, maxY + padding ); // Górny lewy róg
       glEnd();
 
-      // Zakomentowana alternatywa
+      // Commented alternative
       /*
       float backgroundWidth = ( maxX - minX ) + ( 2 * padding );
       float backgroundHeight = ( maxY - minY ) + ( 2 * padding );
@@ -361,7 +361,7 @@ void DrawFontBg( Font *pFont, int x, int y, const char *text, unsigned int foreg
       glEnd();
       glBindTexture( GL_TEXTURE_2D, 0 );
 
-      // Aktualizacja pozycji
+      // Position update
       pFont->x = x;
       pFont->y = y;
       pFont->width = maxX - minX;
