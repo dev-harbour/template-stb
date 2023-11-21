@@ -43,6 +43,14 @@ bool openURL( const char *url )
 bool openEmailClient( const char *emailAddress )
 {
    const int commandBufferSize = 256;
+   const int commandPrefixMaxSize = 10; // for "xdg-open ", "start ", "open "
+
+   if( strlen( emailAddress ) > ( commandBufferSize - commandPrefixMaxSize - 1 ) )
+   {
+      fprintf( stderr, "Email address is too long\n" );
+      return F;
+   }
+
    char command[ commandBufferSize ];
 
 #if defined( _WIN32 ) || defined( _WIN64 )
