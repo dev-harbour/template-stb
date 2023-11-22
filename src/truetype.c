@@ -196,6 +196,7 @@ Font *FontNew( HBGL *pHBGL, const char *fontPath, int fontSize )
    glBindTexture( GL_TEXTURE_2D, pFont->textureID );
    glTexImage2D( GL_TEXTURE_2D, 0, GL_ALPHA, FONT_TEXTURE_SIZE, FONT_TEXTURE_SIZE, 0, GL_ALPHA, GL_UNSIGNED_BYTE, tempBitmap );
    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+   glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
 
    free( ttfBuffer );
    return pFont;

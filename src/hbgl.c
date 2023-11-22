@@ -143,8 +143,9 @@ HBGL *WindowNew( int width, int height, const char *title )
    pHBGL->width  = width;
    pHBGL->height = height;
    pHBGL->title  = title;
-
    pHBGL->background = 0x323232;
+
+   glfwWindowHint( GLFW_SAMPLES, 4 );
 
    pHBGL->window = glfwCreateWindow( pHBGL->width, pHBGL->height, pHBGL->title, NULL, NULL );
    if( ! pHBGL->window )
@@ -205,7 +206,14 @@ void BeginDrawing( HBGL *pHBGL )
 
    glDisable( GL_CULL_FACE );
    glDisable( GL_DEPTH_TEST );
-   glDisable( GL_BLEND );
+   glEnable( GL_BLEND );
+   glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
+
+   // Enable anti-aliasing
+   glEnable( GL_LINE_SMOOTH );
+   glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
+   glEnable( GL_POINT_SMOOTH );
+   glHint( GL_POINT_SMOOTH_HINT, GL_NICEST );
 
    glMatrixMode( GL_PROJECTION );
    glLoadIdentity();
@@ -214,8 +222,6 @@ void BeginDrawing( HBGL *pHBGL )
    glLoadIdentity();
 
    glEnable( GL_TEXTURE_2D );
-   glEnable( GL_BLEND );
-   glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 }
 
 void EndDrawing( const HBGL *pHBGL )

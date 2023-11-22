@@ -60,7 +60,7 @@ struct _Font
    int              width;
    int              height;
    int              fontSize;
-   stbtt_bakedchar  cdata[ 380 ];
+   stbtt_bakedchar  cdata[ 256 * 2 ];
 };
 
 struct _Image
