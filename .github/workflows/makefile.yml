@@ -42,12 +42,12 @@ jobs:
       shell: msys2 {0}
       if: matrix.os == 'windows-latest'
 
-    - name: Run examples
-      run: cd examples && make
+    - name: Run tests
+      run: cd tests && make
       shell: bash
       if: matrix.os == 'ubuntu-latest'
 
-    - name: Run examples (MSYS2 on Windows)
-      run: cd examples && make
+    - name: Run tests (MSYS2 on Windows)
+      run: cd tests && make
       shell: msys2 {0}
       if: matrix.os == 'windows-latest'
